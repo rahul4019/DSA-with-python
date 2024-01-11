@@ -39,6 +39,12 @@ class MyList:
         # reassign A
         self.A = self.B
 
+    def __getitem__(self, index):
+        if 0 <= index < self.n:
+            return self.A[index]
+        else:
+            return 'IndexError - Index out of range'
+
     # inserts the item in the array
     def append(self, item):
         # first check if there is vacant space in the array
@@ -66,5 +72,6 @@ L.append(True)
 L.append(100)
 L.append('Rahul')
 
+print(L[22])
 print(L)
 print(len(L))
