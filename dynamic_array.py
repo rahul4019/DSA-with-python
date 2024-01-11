@@ -13,6 +13,19 @@ class MyList:
     def __len__(self):
         return self.n
 
+    # returns a string containing all the items in the array
+    def __str__(self):
+        result = ''
+        for i in range(self.n):
+            # if(i == self.n -1):
+            #     result += str(self.A[i])
+            # else:
+            #     result += str(self.A[i]) + ','
+            result += str(self.A[i]) + ','
+
+        # slicing result string to remove last comma
+        return '[' + result[:-1] + ']'
+
     # increases the capacity of the array and copy-paste the items of first array to the new array
     def __resize(self, new_capacity):
         # create a new array with new capacity
@@ -51,5 +64,7 @@ L.append('Hello')
 L.append(3.4)
 L.append(True)
 L.append(100)
+L.append('Rahul')
 
+print(L)
 print(len(L))
