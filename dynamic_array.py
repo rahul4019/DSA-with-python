@@ -63,6 +63,18 @@ class MyList:
         print(self.A[self.n-1])
         self.n -= 1
 
+    # clears the array
+    def clear(self):
+        self.n = 0
+        self.size = 1
+
+    # finds the index of given value
+    def find(self, val):
+        for i in range(self.n):
+            if self.A[i] == val:
+                return i
+        return 'ValueError - not in the list'
+
     def __make_array(self, capacity):
         # creates a C type array(static, referential) with size capacity
         return (capacity * ctypes.py_object)()
@@ -80,8 +92,10 @@ L.append(100)
 L.append('Rahul')
 
 # print(L[22])
-print(L)
+# print(L)
 # print(len(L))
-L.pop()
-print(L)
+# L.pop()
+# L.clear()
+# print(L)
+print(L.find('Rahuls'))
 
