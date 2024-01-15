@@ -56,6 +56,13 @@ class MyList:
         self.A[self.n] = item
         self.n += 1
 
+    # removes the last element from the array
+    def pop(self):
+        if (self.n == 0):
+            return 'Empty List'
+        print(self.A[self.n-1])
+        self.n -= 1
+
     def __make_array(self, capacity):
         # creates a C type array(static, referential) with size capacity
         return (capacity * ctypes.py_object)()
@@ -72,6 +79,9 @@ L.append(True)
 L.append(100)
 L.append('Rahul')
 
-print(L[22])
+# print(L[22])
 print(L)
-print(len(L))
+# print(len(L))
+L.pop()
+print(L)
+
