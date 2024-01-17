@@ -75,6 +75,18 @@ class MyList:
                 return i
         return 'ValueError - not in the list'
 
+    # inserts given value at given index
+    def insert(self, index, val):
+        if self.size == self.n:
+            self.__resize(self.size*2)
+
+        for i in range(self.n, index, -1):
+            self.A[i] = self.A[i-1]
+
+        self.A[index] = val
+        self.n += 1
+        return self.A
+
     def __make_array(self, capacity):
         # creates a C type array(static, referential) with size capacity
         return (capacity * ctypes.py_object)()
@@ -96,6 +108,7 @@ L.append('Rahul')
 # print(len(L))
 # L.pop()
 # L.clear()
-# print(L)
-print(L.find('Rahuls'))
-
+print(L)
+# print(L.find('Rahuls'))
+L.insert(0, 0)
+print(L)
