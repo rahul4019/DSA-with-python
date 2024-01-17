@@ -86,6 +86,7 @@ class MyList:
         self.A[index] = val
         self.n += 1
 
+    # deletes item from given index
     def __delitem__(self, index):
         # check if the given in index in the range
         if (0 <= index < self.n):
@@ -94,6 +95,17 @@ class MyList:
             self.n -= 1
         else:
             print('ValueError - out of range')
+
+    # remove
+    def remove(self, val):
+        # first find the index of that value
+        index = self.find(val)
+
+        if type(index) == int:
+            # call the delete item function
+            self.__delitem__(index)
+        else:
+            return (index)
 
     def __make_array(self, capacity):
         # creates a C type array(static, referential) with size capacity
@@ -120,5 +132,6 @@ print(L)
 # print(L.find('Rahuls'))
 # L.insert(0, 0)
 # L.delete(2)
-del L[0]
+# del L[0]
+L.remove('Hello')
 print(L)
