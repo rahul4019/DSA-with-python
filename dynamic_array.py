@@ -85,7 +85,15 @@ class MyList:
 
         self.A[index] = val
         self.n += 1
-        return self.A
+
+    def __delitem__(self, index):
+        # check if the given in index in the range
+        if (0 <= index < self.n):
+            for i in range(index, self.n):
+                self.A[i] = self[i+1]
+            self.n -= 1
+        else:
+            print('ValueError - out of range')
 
     def __make_array(self, capacity):
         # creates a C type array(static, referential) with size capacity
@@ -110,5 +118,7 @@ L.append('Rahul')
 # L.clear()
 print(L)
 # print(L.find('Rahuls'))
-L.insert(0, 0)
+# L.insert(0, 0)
+# L.delete(2)
+del L[0]
 print(L)
