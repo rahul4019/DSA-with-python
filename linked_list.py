@@ -36,6 +36,22 @@ class Linkedlist:
 
         return result[:-2]
 
+    def append(self, value):
+        new_node = Node(value)
+
+        # in case the Linked list is empty
+        if self.head == None:
+            self.head = new_node
+            self.n += 1
+            return
+
+        curr = self.head
+        while curr.next != None:
+            curr = curr.next
+
+        # you are at the last node
+        curr.next = new_node
+        self.n += 1
 
 
 L = Linkedlist()
@@ -43,5 +59,6 @@ L.insert_head(1)
 L.insert_head(2)
 L.insert_head(3)
 L.insert_head(4)
-print(len(L))
+# print(len(L))
+L.append(5)
 print(L)
