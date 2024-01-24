@@ -53,12 +53,32 @@ class Linkedlist:
         curr.next = new_node
         self.n += 1
 
+    def insert_after(self, after, value):
+        new_node = Node(value)
+
+        curr = self.head
+
+        while (curr != None):
+            if curr.data == after:
+                break
+            curr = curr.next
+
+        # case 1 -> item not found
+        if curr != None:
+            new_node.next = curr.next
+            curr.next = new_node
+        # case 2 -> item not found
+        else:
+            print('Item not found')
+            return 
+
 
 L = Linkedlist()
 L.insert_head(1)
 L.insert_head(2)
 L.insert_head(3)
 L.insert_head(4)
-# print(len(L))
-L.append(5)
+print(len(L))
+# L.append(5)
+L.insert_after(1, 200)
 print(L)
