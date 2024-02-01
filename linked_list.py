@@ -152,6 +152,21 @@ class Linkedlist:
 
         return 'Not Found'
 
+    # find the value of passed index and return the found value
+    def __getitem__(self, index):
+        count = 0
+        curr = self.head
+
+        while curr != None:
+            if count == index:
+                return curr.data
+            
+            curr = curr.next
+            count += 1
+
+        return "Not Found"
+
+
 
 L = Linkedlist()
 L.insert_head(1)
@@ -166,5 +181,6 @@ print(L)
 # L.pop()
 # L.remove(25)
 # print(f'after deletion {L}')
-print(L.search(4))
+# print(L.search(4))
+print(L[3])
 print(L)
