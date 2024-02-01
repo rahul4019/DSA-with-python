@@ -130,12 +130,27 @@ class Linkedlist:
                 break
             prev = curr
             curr = curr.next
+
         # case 3 -> item not found
         if curr.next == None:
             return 'Item not found'
         else:
             prev.next = curr.next
             self.n -= 1
+
+    # search the index of passed value and return its index
+    def search(self, value):
+        index = 0
+        curr = self.head
+
+        while curr != None:
+            if curr.data == value:
+                return index
+
+            index += 1
+            curr = curr.next
+
+        return 'Not Found'
 
 
 L = Linkedlist()
@@ -144,11 +159,12 @@ L.insert_head(2)
 L.insert_head(3)
 L.insert_head(4)
 # print(len(L))
-L.append(5)
+# L.append(5)
 # L.insert_after(1, 200)
 print(L)
 # L.delete_head()
 # L.pop()
-L.remove(25)
+# L.remove(25)
 # print(f'after deletion {L}')
+print(L.search(4))
 print(L)
