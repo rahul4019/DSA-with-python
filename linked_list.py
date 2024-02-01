@@ -166,21 +166,39 @@ class Linkedlist:
 
         return "Not Found"
 
+    # replace the maximum value in the LL with the passed value
+    def replace__max(self, value):
+        if self.head == None:
+            return
+        
+        curr = self.head
+        max_node = curr
+
+        while curr != None:
+            if curr.data > max_node.data:
+                max_node = curr
+
+            curr = curr.next
+        
+        max_node.data = value
+        return 
+
 
 
 L = Linkedlist()
+# L.insert_head(3)
+# L.insert_head(2)
+# L.insert_head(4)
 L.insert_head(1)
-L.insert_head(2)
-L.insert_head(3)
-L.insert_head(4)
 # print(len(L))
 # L.append(5)
 # L.insert_after(1, 200)
-print(L)
+print('Before: ',L)
 # L.delete_head()
 # L.pop()
 # L.remove(25)
 # print(f'after deletion {L}')
 # print(L.search(4))
-print(L[3])
-print(L)
+# print(L[3])
+L.replace__max(90)
+print('After:',L)
