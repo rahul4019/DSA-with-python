@@ -160,7 +160,7 @@ class Linkedlist:
         while curr != None:
             if count == index:
                 return curr.data
-            
+
             curr = curr.next
             count += 1
 
@@ -170,7 +170,7 @@ class Linkedlist:
     def replace__max(self, value):
         if self.head == None:
             return
-        
+
         curr = self.head
         max_node = curr
 
@@ -179,26 +179,41 @@ class Linkedlist:
                 max_node = curr
 
             curr = curr.next
-        
-        max_node.data = value
-        return 
 
+        max_node.data = value
+        return
+
+    # adds the values of the odd indices of the LL
+    def sum_odd_nodes(self):
+        index = 0
+        curr = self.head
+        sum = 0
+
+        while curr != None:
+            if index % 2 != 0:
+                sum += curr.data
+
+            curr = curr.next
+            index += 1
+
+        return sum
 
 
 L = Linkedlist()
-# L.insert_head(3)
-# L.insert_head(2)
-# L.insert_head(4)
+L.insert_head(4)
+L.insert_head(3)
+L.insert_head(2)
 L.insert_head(1)
 # print(len(L))
 # L.append(5)
 # L.insert_after(1, 200)
-print('Before: ',L)
+print('Before: ', L)
 # L.delete_head()
 # L.pop()
 # L.remove(25)
 # print(f'after deletion {L}')
 # print(L.search(4))
 # print(L[3])
-L.replace__max(90)
-print('After:',L)
+# L.replace__max(90)
+print(L.sum_odd_nodes())
+print('After:', L)
