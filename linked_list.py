@@ -210,19 +210,33 @@ class Linkedlist:
 
             prev_node = curr_node
             curr_node = next_node
-        
+
         self.head = prev_node
 
 
+    def removeOccurence(self):
+        curr = self.head
+
+        while curr != None:
+
+            if curr.data == "*" or curr.data == "/":
+                curr.data = ' '
+
+                if curr.next.data == '*' or curr.next.data == '/':
+                    curr.next = curr.next.next
+                    curr.next.data = curr.next.data.upper()
+
+            curr = curr.next
+
+
 L = Linkedlist()
-L.insert_head(4)
-L.insert_head(3)
-L.insert_head(2)
-L.insert_head(1)
+# L.insert_head(4)
+# L.insert_head(3)
+# L.insert_head(2)
+# L.insert_head(1)
 # print(len(L))
 # L.append(5)
 # L.insert_after(1, 200)
-print('Before: ', L)
 # L.delete_head()
 # L.pop()
 # L.remove(25)
@@ -231,5 +245,44 @@ print('Before: ', L)
 # print(L[3])
 # L.replace__max(90)
 # print(L.sum_odd_nodes())
-L.reverse()
+L.insert_head('y')
+L.insert_head('a')
+L.insert_head('w')
+L.insert_head('A')
+L.insert_head('*')
+L.insert_head('r')
+L.insert_head('o')
+L.insert_head('t')
+L.insert_head('c')
+L.insert_head('o')
+L.insert_head('d')
+L.insert_head('/')
+L.insert_head('/')
+L.insert_head('a')
+L.insert_head('*')
+L.insert_head('/')
+L.insert_head('s')
+L.insert_head('p')
+L.insert_head('e')
+L.insert_head('e')
+L.insert_head('k')
+L.insert_head('*')
+L.insert_head('*')
+L.insert_head('y')
+L.insert_head('a')
+L.insert_head('d')
+L.insert_head('/')
+L.insert_head('a')
+L.insert_head('*')
+L.insert_head('e')
+L.insert_head('l')
+L.insert_head('p')
+L.insert_head('p')
+L.insert_head('a')
+L.insert_head('/')
+L.insert_head('*')
+L.insert_head('n')
+L.insert_head('A')
+print('Before: ', L)
+L.removeOcc()
 print('After:', L)
