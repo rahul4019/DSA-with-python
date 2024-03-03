@@ -42,7 +42,7 @@ class Stack:
         return temp
 
     # reverses the string
-    def reverseString(self, string):
+    def reverse_string(self, string):
 
         s = Stack()
 
@@ -55,6 +55,31 @@ class Stack:
             newStr += s.pop()
 
         print(newStr)
+
+    def text_editor(self, string, operations):
+        # s = Stack()
+        undo = Stack()
+        redo = Stack()
+
+        # creating stack of the given string
+        for i in string:
+            undo.push(i)
+
+        for i in operations:
+            if i == 'u':
+                temp = undo.pop()
+                redo.push(temp)
+
+            elif i == 'r':
+                temp = redo.pop()
+                undo.push(temp)
+
+        res = ''
+
+        while not undo.isempty():
+            res = undo.pop() + res
+
+        print(res)
 
 
 s = Stack()
@@ -72,4 +97,6 @@ s = Stack()
 # s.traverse()
 # print(s.peek())
 
-s.reverseString('rahul')
+# s.reverseString('rahul')
+# s.text_editor('hello', 'ururu')
+s.text_editor('hello', 'uuur')
