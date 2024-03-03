@@ -37,20 +37,39 @@ class Stack:
     def pop(self):
         if self.isempty():
             return 'Stack Empty'
+        temp = self.top.data
         self.top = self.top.next
+        return temp
+
+    # reverses the string
+    def reverseString(self, string):
+
+        s = Stack()
+
+        for i in string:
+            s.push(i)
+
+        newStr = ''
+
+        while (not s.isempty()):
+            newStr += s.pop()
+
+        print(newStr)
 
 
 s = Stack()
 
 
-s.push(2)
-s.push(3)
-s.push(4)
+# s.push(2)
+# s.push(3)
+# s.push(4)
 # print(s.isempty())
-s.traverse()
-s.pop()
-s.pop()
-s.pop()
-print(s.pop())
-s.traverse()
+# s.traverse()
+# s.pop()
+# s.pop()
+# s.pop()
+# print(s.pop())
+# s.traverse()
 # print(s.peek())
+
+s.reverseString('rahul')
