@@ -56,6 +56,17 @@ class Stack:
 
         print(newStr)
 
+    # returns number of elements in the stack
+    def size(self):
+        temp = self.top
+        counter = 0
+
+        while temp is not None:
+            temp = temp.next
+            counter += 1
+
+        return counter
+
     def text_editor(self, string, operations):
         # s = Stack()
         undo = Stack()
@@ -99,4 +110,30 @@ s = Stack()
 
 # s.reverseString('rahul')
 # s.text_editor('hello', 'ururu')
-s.text_editor('hello', 'uuur')
+# s.text_editor('hello', 'uuur')
+
+L = [[0, 0, 1, 1], [0, 0, 1, 0], [0, 0, 0, 0], [0, 0, 1, 0]]
+
+
+def find_the_celeb(L):
+    s = Stack()
+
+    for i in range(len(L)):
+        s.push(i)
+
+    while s.size() >= 2:
+        i = s.pop()
+        j = s.pop()
+
+        # check the relation of i and j
+        if L[i][j] == 0:
+            # j is not a celebrity
+            s.push(i)
+        else:
+            # i is not a celebrity
+            s.push(j)
+
+    print(s.traverse())
+
+
+find_the_celeb(L)
