@@ -136,4 +136,4 @@ def find_the_celeb(L):
     print(s.traverse())
 
 
-find_the_celeb(L)
+# find_the_celeb(L)
