@@ -53,6 +53,13 @@ class Dictionary:
 
         return "Not Found"
 
+    def __str__(self):
+
+        for i in range(len(self.slots)):
+            if self.slots[i] != None:
+                print(f"{self.slots[i]}: {self.data[i]}", end=" ")
+        return ""
+
     # to use dictionary notation
     def __setitem__(self, key, value):
         self.put(key, value)
@@ -87,3 +94,5 @@ print(D1.get("python"))
 print(D1.get("c"))  # will return "Not Found"
 
 print(D1["python"])
+
+print(D1)
