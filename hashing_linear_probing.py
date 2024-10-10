@@ -35,9 +35,30 @@ class Dictionary:
                 else:
                     self.data[new_hash_value] = value
 
+    def get(self, key):
+        start_position = self.hash_function(key)
+        current_position = start_position
+
+        while self.slots[current_position] != None:
+
+            # key found on the current_position
+            if self.slots[current_position] == key:
+                return self.data[current_position]
+
+            current_position = self.rehash(current_position)
+
+            # key not found
+            if current_position == start_position:
+                return "Not Found"
+
+        return "Not Found"
+
     # to use dictionary notation
     def __setitem__(self, key, value):
         self.put(key, value)
+
+    def __getitem__(self, key):
+        return self.get(key)
 
     def rehash(self, old_hash):
         return (
@@ -61,3 +82,8 @@ D1["python"] = 9201  # using __setitem__ magic method
 
 print(D1.slots)
 print(D1.data)
+
+print(D1.get("python"))
+print(D1.get("c"))  # will return "Not Found"
+
+print(D1["python"])
