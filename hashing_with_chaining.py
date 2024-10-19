@@ -18,7 +18,7 @@ class LL:
         else:
             temp = self.head
 
-            while temp.next is not None:
+            while temp.next != None:
                 temp = temp.next
 
             temp.next = new_node
@@ -60,7 +60,7 @@ class LL:
 
         while temp != None:
 
-            print(temp.key, "-->", temp.value, " ", end=" ")
+            print(temp.key, " : ", temp.value, " ")
             temp = temp.next
 
     def size(self):
@@ -95,10 +95,65 @@ class LL:
         temp = self.head
         counter = 0
 
-        while temp is not None:
+        while temp != None:
 
             if counter == index:
                 return temp
             temp = temp.next
             counter += 1
 
+
+class Dictionary:
+
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.size = 0
+
+        # create array of LL
+        self.buckets = self.make_array(self.capacity)
+
+    def make_array(self, capacity):
+        L = []  #  array
+
+        # adding capacity times of linked lists to the L array
+        for i in range(capacity):
+            L.append(LL())
+
+        return L
+
+    def put(self, key, value):
+        bucket_index = self.hash_function(key)
+
+        node_index = self.get_node_index(bucket_index, key)
+
+        if node_index == -1:
+            # insert
+            self.buckets[bucket_index].add(
+                key, value
+            )  # add key and value to the linked list
+            self.size += 1
+        else:
+            # update
+            node = self.buckets[bucket_index].get_node_at_index(node_index)
+            node.value = value
+
+    def get_node_index(self, bucket_index, key):
+        node_index = self.buckets[bucket_index].search(key)
+        return node_index
+
+    def hash_function(self, key):
+        return abs(hash(key)) % self.capacity
+
+
+D1 = Dictionary(4)
+D1.put("python", 34)
+D1.put("python", 1001)
+D1.put("javascript", 91)
+D1.put("typescript", 62)
+D1.put("c", 100)
+
+# print(D1.buckets)
+
+# for i in range(4):
+#     D1.buckets[i].traverse()
+D1.buckets[0].traverse()
