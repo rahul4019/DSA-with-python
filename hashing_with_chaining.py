@@ -121,6 +121,29 @@ class Dictionary:
 
         return L
 
+    # magic method to set value (to use [] notation)
+    def __setitem__(self, key, value):
+        self.put(key, value)
+
+    def __getitem__(self, key):
+        return self.get(key)
+
+    def __delitem__(self, key):
+        bucket_index = self.hash_function(key)
+
+        self.buckets[bucket_index].remove(key)
+
+    def get(self, key):
+        bucket_index = self.hash_function(key)
+
+        res = self.buckets[bucket_index].search(key)
+
+        if res == -1:  # key not found
+            return "Not Present"
+        else:
+            node = self.buckets[bucket_index].get_node_at_index(res)
+            return node.value
+
     def put(self, key, value):
         bucket_index = self.hash_function(key)
 
@@ -165,14 +188,18 @@ class Dictionary:
         return abs(hash(key)) % self.capacity
 
 
-D1 = Dictionary(2)
+D1 = Dictionary(4)
 D1.put("python", 34)
 # D1.put("python", 1001)
 D1.put("javascript", 91)
 D1.put("typescript", 62)
 D1.put("c", 100)
 
-print(D1.buckets)
+del D1["typescript"]  # deletes the element
+print(D1["typescript"])  # get item using magic method
+
+
+# print(D1.buckets)
 
 # for i in range(4):
 #     D1.buckets[i].traverse()
