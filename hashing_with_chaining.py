@@ -132,10 +132,30 @@ class Dictionary:
                 key, value
             )  # add key and value to the linked list
             self.size += 1
+
+            load_factor = self.size / self.capacity
+            print(load_factor)
+
+            # calculating load factor
+            if load_factor >= 2:
+                self.rehash()
         else:
             # update
             node = self.buckets[bucket_index].get_node_at_index(node_index)
             node.value = value
+
+    def rehash(self):
+        self.capacity = self.capacity * 2
+        old_buckets = self.buckets
+        self.size = 0
+        self.buckets = self.make_array(self.capacity)
+
+        for i in old_buckets:
+            for j in range(i.size()):
+                node = i.get_node_at_index(j)
+                key_item = node.key
+                value_item = node.value
+                self.put(key_item, value_item)
 
     def get_node_index(self, bucket_index, key):
         node_index = self.buckets[bucket_index].search(key)
@@ -145,15 +165,15 @@ class Dictionary:
         return abs(hash(key)) % self.capacity
 
 
-D1 = Dictionary(4)
+D1 = Dictionary(2)
 D1.put("python", 34)
-D1.put("python", 1001)
+# D1.put("python", 1001)
 D1.put("javascript", 91)
 D1.put("typescript", 62)
 D1.put("c", 100)
 
-# print(D1.buckets)
+print(D1.buckets)
 
 # for i in range(4):
 #     D1.buckets[i].traverse()
-D1.buckets[0].traverse()
+# D1.buckets[0].traverse()
