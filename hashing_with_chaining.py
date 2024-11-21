@@ -60,7 +60,7 @@ class LL:
 
         while temp != None:
 
-            print(temp.key, " : ", temp.value, " ")
+            print(temp.key, ":", temp.value, " ")
             temp = temp.next
 
     def size(self):
@@ -133,6 +133,12 @@ class Dictionary:
 
         self.buckets[bucket_index].remove(key)
 
+    def __str__(self):
+        for i in self.buckets:
+            i.traverse()
+
+        return ""
+
     def get(self, key):
         bucket_index = self.hash_function(key)
 
@@ -195,9 +201,10 @@ D1.put("javascript", 91)
 D1.put("typescript", 62)
 D1.put("c", 100)
 
-del D1["typescript"]  # deletes the element
+# del D1["typescript"]  # deletes the element
 print(D1["typescript"])  # get item using magic method
 
+print(D1)
 
 # print(D1.buckets)
 
