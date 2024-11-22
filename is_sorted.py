@@ -1,3 +1,7 @@
+import random
+import time
+
+
 def is_sorted(list):
 
     if len(list) == 0:
@@ -17,5 +21,18 @@ def is_sorted(list):
 
 
 # print(is_sorted([5, 2, 3, 4, 5]))
-print(is_sorted([1, 2, 3, 4, 5]))
+# print(is_sorted([1, 2, 3, 4, 5]))
 # print(is_sorted([]))
+
+
+def monkey_sort(arr):
+
+    while not is_sorted(arr):
+        time.sleep(1)
+        random.shuffle(arr)
+        print(arr)
+
+    print(arr)
+
+
+monkey_sort([7, 4, 2, 3, 9])
